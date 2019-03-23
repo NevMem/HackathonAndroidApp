@@ -19,24 +19,20 @@ export default class Concert extends React.Component {
 		this.state={
 			socket:this.props.socket,
 			token:this.props.token,
-			emodzi:[0,1,2,3,4,5,6],
+			emodzi:[0].concat(this.props.emoji),
 			curEmoji:[1,2,3,4,5],
-			concertId:this.props.concertId
+			concertId:this.props.concertId,
 		};
 	}
 
 	componentDidMount() {
-		this.state.socket.on('emodzi', data => {
-			this.setState({
-				emodzi:emodzi
-			});
-		});
-		this.state.socket.on('tray new emoji', index => {
+		this.state.socket.on('tray new emoji', data => {
+			let index=data.index;
 			console.log(index);
 			let arr=this.state.emodzi;
 			arr[index]++;
 			let newCurEmo=this.state.curEmoji;
-			newCurEmo.push(index);
+			newCurEmo.push(index-1);
 			this.setState({
 				emodzi:arr,
 				curEmoji:newCurEmo,
@@ -61,7 +57,7 @@ export default class Concert extends React.Component {
 				{
 					arr.map(key=>{
 						return(
-							<View style = {styles.Emodzi}>
+							<View key = {key} style = {styles.Emodzi}>
 								<TouchableOpacity 
 								onPress={() => this.sendEmodzi.call(this,key)}>
 									<Image source={Emodzi[key-1]}

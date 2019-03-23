@@ -20,7 +20,7 @@ export default class Header extends React.Component {
 				{
 					this.props.emodzis.map((emodzi,index)=>{
 						if(this.props.emodzis.length-index>5)
-							return <Text key={index}></Text>
+							return undefined;
 						return (
 							<View key={index} style={styles.Emodzi}>
 								<Image source={Emodzi[emodzi]} 

@@ -66,11 +66,12 @@ export default class MainMenu extends React.Component{
 		});
 	}
 
-	goToConcert = (concertId) => {
+	goToConcert = (concertId, emoji) => {
 		this.props.router.push.Concert({
 			socket:this.state.socket,
 			token:this.state.token,
-			concertId:concertId
+			concertId:concertId,
+			emoji:emoji
 		});
 	}
 
@@ -99,7 +100,7 @@ export default class MainMenu extends React.Component{
 										<View style={styles.ButtonHere}>
 										{	concert.isActive ?
 										 <Button onClick={
-										 	()=>this.goToConcert.call(this,concert._id)}>
+										 	()=>this.goToConcert.call(this,concert._id,concert.emoji)}>
 										 	<Text>Я тут</Text>
 										 </Button> :
 										 <Text></Text>
