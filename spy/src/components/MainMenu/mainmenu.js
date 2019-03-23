@@ -66,10 +66,11 @@ export default class MainMenu extends React.Component{
 		});
 	}
 
-	goToConcert = () => {
+	goToConcert = (concertId) => {
 		this.props.router.push.Concert({
 			socket:this.state.socket,
-			token:this.state.token
+			token:this.state.token,
+			concertId:concertId
 		});
 	}
 
@@ -97,7 +98,8 @@ export default class MainMenu extends React.Component{
 										<Text>{concert.date}</Text>
 										<View style={styles.ButtonHere}>
 										{	concert.isActive ?
-										 <Button onClick={this.goToConcert}>
+										 <Button onClick={
+										 	()=>this.goToConcert.call(this,concert._id)}>
 										 	<Text>Я тут</Text>
 										 </Button> :
 										 <Text></Text>
