@@ -4,10 +4,13 @@ export const styles=StyleSheet.create({
 	Auth:{
 		alignItems:'center',
 		justifyContent: 'center',
-		flexDirectoin: 'column',
+		flexDirection: 'column',
 		flex: 1,
 		//TODO fontFamily: 'Montserrat', sans-serif,
-		margin: '-20 0 50',
+		marginTop: -20,
+		marginLeft: 0,
+		marginRight: 0,
+		marginBottom: 50,
 	},
 	H1:{
 		fontWeight: 'bold',
@@ -21,6 +24,7 @@ export const styles=StyleSheet.create({
 		fontSize: 12,
 	},
 	Social:{
-		margin: '20 0',
+		marginTop: 20,
+		marginBottom: 20,
 	},
 });

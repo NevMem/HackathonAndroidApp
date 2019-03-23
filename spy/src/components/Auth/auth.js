@@ -116,13 +116,13 @@ export default class Auth extends React.Component {
 							<Text style={styles.H1}>Вход</Text>
 							<View style={styles.socialContainer}>
 								<TouchableOpacity style={styles.Social}>
-									<Image source={require('../../images/socNet/f.svg')} href='#'/>
+									<Image source={require('../../images/socNet/f.png')}/>
 								</TouchableOpacity>
 								<TouchableOpacity style={styles.Social}>
-									<Image source={require('../../images/socNet/g.svg')} href='#'/>
+									<Image source={require('../../images/socNet/g.png')}/>
 								</TouchableOpacity>
 								<TouchableOpacity style={styles.Social}>
-									<Image source={require('../../images/socNet/v.svg')} href='#'/>
+									<Image source={require('../../images/socNet/v.png')}/>
 								</TouchableOpacity>
 							</View>
 							<Text style={styles.Span}>or use your account</Text>

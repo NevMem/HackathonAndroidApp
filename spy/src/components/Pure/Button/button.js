@@ -19,11 +19,11 @@ Button.defaultProps={
 
 const styles=StyleSheet.create({
 	Button:{
-			textAlign:'center',
-			textColor: 'white',
+		textAlign:'center',
+		//textColor: 'white',
 	  	fontSize: 20,
 	  	backgroundColor: '#FFE53B',
-			backgroundImage: 'linear-gradient(147deg, #FFE53B 0%, #FF2525 74%)',
+		//backgroundImage: 'linear-gradient(147deg, #FFE53B 0%, #FF2525 74%)',
 	  	borderRadius: 20,
 	  	padding: 6,
 	  	overflow: 'hidden',
