@@ -17,7 +17,7 @@ export default class MainMenu extends React.Component{
 				location:{"latitude":59.87866,"longitude":30.26288},
 				posterRef:'http://kek',
 				artistNames:['kek','cheburek','lol','arbidol'],
-				active:true,
+				isActive:true,
 			},
 			{
 				_id:"5c95ab56d589e13c609ddce1",
@@ -50,7 +50,9 @@ export default class MainMenu extends React.Component{
 	}
 
 	componentDidMount() {
-		this.state.socket.on('concert',data=>{
+		this.state.socket.emit('getUserConcerts',{});
+
+		this.state.socket.on('userConcerts',data=>{
 			this.setState({
 				concerts:data
 			});
@@ -64,10 +66,12 @@ export default class MainMenu extends React.Component{
 		});
 	}
 
-	goToConcert = () => {
+	goToConcert = (concertId, emoji) => {
 		this.props.router.push.Concert({
 			socket:this.state.socket,
-			token:this.state.token
+			token:this.state.token,
+			concertId:concertId,
+			emoji:emoji
 		});
 	}
 
@@ -94,8 +98,9 @@ export default class MainMenu extends React.Component{
 										<Text>{concert.address}</Text>
 										<Text>{concert.date}</Text>
 										<View style={styles.ButtonHere}>
-										{	concert.active ?
-										 <Button onClick={this.goToConcert}>
+										{	concert.isActive ?
+										 <Button onClick={
+										 	()=>this.goToConcert.call(this,concert._id,concert.emoji)}>
 										 	<Text>Я тут</Text>
 										 </Button> :
 										 <Text></Text>

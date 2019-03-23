@@ -49,7 +49,8 @@ export default class Browse extends React.Component{
 	}
 
 	componentDidMount() {
-		this.state.socket.on('concert',data=>{
+		this.state.socket.emit('getAllConcerts', {});
+		this.state.socket.on('allConcerts',data=>{
 			this.setState({
 				concerts:data
 			});
@@ -58,6 +59,12 @@ export default class Browse extends React.Component{
 
 	changeToCollection = () => {
 		this.props.router.pop();
+	}
+
+	AddConcert = (concertId) => {
+		this.state.socket.emit('addConcert', {
+			concertId:concertId
+		});
 	}
 
 	render(){

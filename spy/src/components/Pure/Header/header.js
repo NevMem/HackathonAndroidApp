@@ -1,4 +1,4 @@
-import {View, Text,StyleSheet, Image} from 'react-native';
+import {View, Text,StyleSheet, Image, Dimensions} from 'react-native';
 import React from 'react';
 
 const Emodzi=[
@@ -20,7 +20,7 @@ export default class Header extends React.Component {
 				{
 					this.props.emodzis.map((emodzi,index)=>{
 						if(this.props.emodzis.length-index>5)
-							return <Text key={index}></Text>
+							return undefined;
 						return (
 							<View key={index} style={styles.Emodzi}>
 								<Image source={Emodzi[emodzi]} 
@@ -34,11 +34,12 @@ export default class Header extends React.Component {
 	}
 }
 
+const Screen_width=Dimensions.get('window').width;
+
 const styles=StyleSheet.create({
 	Header:{
-		flex: 1,
 		height: 60,
-		width:200,
+		width:Screen_width,
 		flexDirection: 'row',
 		justifyContent: 'space-around',
 		alignItems: 'center',
