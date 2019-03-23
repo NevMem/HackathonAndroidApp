@@ -2,15 +2,22 @@ import {StyleSheet} from 'react-native';
 
 export const styles=StyleSheet.create({
 	Page:{
-		flex: 1,
-		flexDirection: 'row',
-	},
-	Content:{
 		flexDirection: 'column',
 		flexWrap: 'wrap',
+		flex: 1,
+	},
+	Emodzis:{
+		flexDirection: 'column',
+		flexWrap: 'wrap',
+		flex: 1,
+		maxWidth: 700,
 	},
 	Emodzi:{
-		width: 200,
-		height: 200,
+		margin: 5,
+		minWidth: 170,
+		minHeight: 170,
+		padding: 30,
+		textAlign: 'center',
+		backgroundColor: 'red',
 	}
 });

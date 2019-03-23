@@ -32,7 +32,7 @@ export default class Concert extends React.Component {
 		});
 		this.state.socket.on('tray new emoji', index => {
 			let arr=this.state.emodzi;
-			arr[index]++:
+			arr[index]++;
 			let newCurEmo=this.state.curEmoji;
 			newCurEmo.push(index);
 			this.setState({
@@ -46,13 +46,13 @@ export default class Concert extends React.Component {
 		return(
 			<View style={styles.Page}>
 				<Header emodzis={this.state.emodzi}/>
-				<View>
-					<View></View>
-					<View></View>
-					<View></View>
-					<View></View>
-					<View></View>
-					<View></View>
+				<View style={styles.Emodzis}>
+					<View style = {styles.Emodzi}></View>
+					<View style = {styles.Emodzi}></View>
+					<View style = {styles.Emodzi}></View>
+					<View style = {styles.Emodzi}></View>
+					<View style = {styles.Emodzi}></View>
+					<View style = {styles.Emodzi}></View>
 				</View>
 			</View>
 		);
