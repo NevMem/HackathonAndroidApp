@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, Text, TouchableOpacity, ImageBackground, Image} from 'react-native';
 import React from 'react';
 import Router from 'react-native-easy-router';
 import Input from '../Pure/TextInput/textinput.js';
@@ -112,51 +112,51 @@ export default class Auth extends React.Component {
 					source={require('../../images/Auth.jpg')} 
 					style={{width: '100%', height: '100%'}}
 				>
-  	  		<View style={styles.Page}>
-  	  			<View style={styles.Auth}>
-						<Div class="form-container sign-in-container">
-							<Form action="#">
-								<H1>Вход</H1>
-								<Div class="social-container">
-									<A href="#" class="social"><I class="fab fa-facebook-f"></I></A>
-									<A href="#" class="social"><I class="fab fa-google-plus-g"></I></A>
-									<A href="#" class="social"><I class="fab fa-linkedin-in"></I></A>
-								</Div>
-								<Span>or use your account</Span>
-								<Input 
-									type="email" 
-									placeholder="Почта"
-									onChangeText={this.handleInputLogin}
-  	  						value={this.state.login}
-								/>
-								<Input
-									type="password"
-									placeholder="Пароль"
-									onChangeText={this.handleInputPassword}
-									value={this.state.password}
-								/>
-								<A href="#">Забыли пароль?</A>
-								<View style={styles.ButtonAuth}>
-									<Button onClick={this.handleSubmit}>
-										<Text>Вход</Text>
-									</Button>
-								</View>
-							</Form>
-						</Div>
-  	  				{/* <Input placeholder="Введите логин"
-  	  				onChangeText={this.handleInputLogin}
-  	  				value={this.state.login}/>
-  	  				<Input placeholder="Введите пароль"
-  	  				onChangeText={this.handleInputPassword}
-  	  				value={this.state.password}/>
-              <View style={styles.ButtonAuth}>
-    	  				<Button onClick={this.handleSubmit}>
-    	  					<Text>Auth</Text>
-    	  				</Button>
-              </View> */}
-  	  			</View>
-  	  		</View>
-        </ImageBackground>
+					<View style={styles.Auth}>
+							<Text style={styles.H1}>Вход</Text>
+							<View style={styles.socialContainer}>
+								<TouchableOpacity style={styles.Social}>
+									<Image source={require('../../images/socNet/f.svg')} href='#'/>
+								</TouchableOpacity>
+								<TouchableOpacity style={styles.Social}>
+									<Image source={require('../../images/socNet/g.svg')} href='#'/>
+								</TouchableOpacity>
+								<TouchableOpacity style={styles.Social}>
+									<Image source={require('../../images/socNet/v.svg')} href='#'/>
+								</TouchableOpacity>
+							</View>
+							<Text style={styles.Span}>or use your account</Text>
+							<Input 
+								type="email" 
+								placeholder="Почта"
+								onChangeText={this.handleInputLogin}
+								value={this.state.login}
+							/>
+							<Input
+								type="password"
+								placeholder="Пароль"
+								onChangeText={this.handleInputPassword}
+								value={this.state.password}
+							/>
+							<Text href="#">Забыли пароль?</Text>
+							<View style={styles.ButtonAuth}>
+								<Button onClick={this.handleSubmit}>
+									<Text>Вход</Text>
+								</Button>
+							</View>
+						{/* <Input placeholder="Введите логин"
+						onChangeText={this.handleInputLogin}
+						value={this.state.login}/>
+						<Input placeholder="Введите пароль"
+						onChangeText={this.handleInputPassword}
+						value={this.state.password}/>
+						<View style={styles.ButtonAuth}>
+							<Button onClick={this.handleSubmit}>
+								<Text>Auth</Text>
+							</Button>
+						</View> */}
+					</View>
+  	  	</ImageBackground>
   		);
   	}
 }
