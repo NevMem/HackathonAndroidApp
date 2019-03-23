@@ -148,7 +148,7 @@ export default class Auth extends React.Component {
 							<Text href="#" style={styles.A}>Забыли пароль?</Text>
 							<View style={styles.ButtonAuth}>
 								<Button onClick={this.handleSubmit}>
-									<Text>ВХОД</Text>
+                  <Text style={styles.EnterText}>Вход</Text>
 								</Button>
 							</View>
 					</View>

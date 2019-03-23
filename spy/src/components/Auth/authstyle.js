@@ -8,13 +8,13 @@ export const styles=StyleSheet.create({
 		flex: 1,
 		//TODO fontFamily: 'Montserrat', sans-serif,
 		marginTop: -20,
-		marginLeft: 0,
-		marginRight: 0,
+		marginLeft: 10,
+		marginRight: 10,
 		marginBottom: 50,
 	},
 	H1:{
 		fontWeight: 'bold',
-		color: 'white',
+		color: 'black',
 		fontSize: 36,
 		margin: 0,
 	},
@@ -23,7 +23,7 @@ export const styles=StyleSheet.create({
 		height: 50,
 	},
 	Span:{
-		color: 'white',
+		color: 'black',
 		fontSize: 24,
 	},
 	Social:{
@@ -33,10 +33,15 @@ export const styles=StyleSheet.create({
 		height: 100,
 	},
 	A:{
-		color: 'white',
+		color: 'black',
 		fontSize: 32,
 		marginVertical: 15,
 		marginHorizontal: 0,
+	},
+	EnterText:{
+		color:'black',
+		fontSize: 24,
+		fontWeight: "200",
 	},
 	SocialContainer:{
 		flexDirection: 'row',
