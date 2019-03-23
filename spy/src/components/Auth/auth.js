@@ -131,14 +131,12 @@ export default class Auth extends React.Component {
 								placeholder="Почта"
 								onChangeText={this.handleInputLogin}
 								value={this.state.login}
-								style={styles.Input}
 							/>
 							<Input
 								type="password"
 								placeholder="Пароль"
 								onChangeText={this.handleInputPassword}
 								value={this.state.password}
-								style={styles.Input}
 							/>
 							<Text href="#" style={styles.A}>Забыли пароль?</Text>
 							<View style={styles.ButtonAuth}>
@@ -146,17 +144,6 @@ export default class Auth extends React.Component {
 									<Text>ВХОД</Text>
 								</Button>
 							</View>
-						{/* <Input placeholder="Введите логин"
-						onChangeText={this.handleInputLogin}
-						value={this.state.login}/>
-						<Input placeholder="Введите пароль"
-						onChangeText={this.handleInputPassword}
-						value={this.state.password}/>
-						<View style={styles.ButtonAuth}>
-							<Button onClick={this.handleSubmit}>
-								<Text>Auth</Text>
-							</Button>
-						</View> */}
 					</View>
   	  	</ImageBackground>
   		);
