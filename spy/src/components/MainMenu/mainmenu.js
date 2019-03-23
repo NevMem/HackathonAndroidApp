@@ -86,7 +86,10 @@ export default class MainMenu extends React.Component{
 										<Text>{concert.address}</Text>
 										<Text>{concert.date}</Text>
 										<View style={styles.ButtonHere}>
-										<Button><Text>Я тут</Text></Button>
+										{	concert.active ?
+										 <Button><Text>Я тут</Text></Button> :
+										 <Text></Text>
+										}
 										</View>
 									</View>
 								</View>
