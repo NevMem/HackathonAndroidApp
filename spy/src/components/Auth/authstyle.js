@@ -23,8 +23,9 @@ export const styles=StyleSheet.create({
 		height: 50,
 	},
 	Span:{
-		color: 'black',
+		color: 'white',
 		fontSize: 24,
+		fontWeight: "300",
 	},
 	Social:{
 		marginTop: 20,
@@ -33,8 +34,8 @@ export const styles=StyleSheet.create({
 		height: 100,
 	},
 	A:{
-		color: 'black',
-		fontSize: 32,
+		color: '#D7D7D9FF',
+		fontSize: 24,
 		marginVertical: 15,
 		marginHorizontal: 0,
 	},

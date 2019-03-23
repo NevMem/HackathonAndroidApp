@@ -93,6 +93,9 @@ export default class Browse extends React.Component{
 									</View>
 								</View>
 							);
+							if(index>15){
+								break;
+							}
 						})}
 					</ScrollView>
 				</View>
