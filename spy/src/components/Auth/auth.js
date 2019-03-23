@@ -1,4 +1,5 @@
-import {View, Text, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
+
+import {View, Text, TouchableOpacity, ImageBackground, Image} from 'react-native';
 import React from 'react';
 import Router from 'react-native-easy-router';
 import Input from '../Pure/TextInput/textinput.js';
@@ -114,24 +115,44 @@ export default class Auth extends React.Component {
 
   	render() {
   		return(
-        <ImageBackground source={require('../../images/Auth.jpg')} 
-        style={{width: '100%', height: '100%'}}>
-  	  		<View style={styles.Page}>
-  	  			<View style={styles.Auth}>
-  	  				<Input placeholder="Введите логин"
-  	  				onChangeText={this.handleInputLogin}
-  	  				value={this.state.login}/>
-  	  				<Input placeholder="Введите пароль"
-  	  				onChangeText={this.handleInputPassword}
-  	  				value={this.state.password}/>
-              <View style={styles.ButtonAuth}>
-    	  				<Button onClick={this.handleSubmit}>
-    	  					<Text>Auth</Text>
-    	  				</Button>
-              </View>
-  	  			</View>
-  	  		</View>
-        </ImageBackground>
+				<ImageBackground 
+					source={require('../../images/Auth.jpg')} 
+					style={{width: '100%', height: '100%'}}
+				>
+					<View style={styles.Auth}>
+							<Text style={styles.H1}>Вход</Text>
+							<View style={styles.SocialContainer}>
+								<TouchableOpacity style={styles.Social}>
+									<Image source={require('../../images/socNet/f.png')}/>
+								</TouchableOpacity>
+								<TouchableOpacity style={styles.Social}>
+									<Image source={require('../../images/socNet/g.png')}/>
+								</TouchableOpacity>
+								<TouchableOpacity style={styles.Social}>
+									<Image source={require('../../images/socNet/v.png')}/>
+								</TouchableOpacity>
+							</View>
+							<Text style={styles.Span}>или используйте свой аккаунт</Text>
+							<Input
+								type="email" 
+								placeholder="Почта"
+								onChangeText={this.handleInputLogin}
+								value={this.state.login}
+							/>
+							<Input
+								type="password"
+								placeholder="Пароль"
+								onChangeText={this.handleInputPassword}
+								value={this.state.password}
+							/>
+							<Text href="#" style={styles.A}>Забыли пароль?</Text>
+							<View style={styles.ButtonAuth}>
+								<Button onClick={this.handleSubmit}>
+									<Text>ВХОД</Text>
+								</Button>
+							</View>
+					</View>
+  	  	</ImageBackground>
   		);
   	}
 }

@@ -19,17 +19,14 @@ Button.defaultProps={
 
 const styles=StyleSheet.create({
 	Button:{
-		backgroundColor: '#3ab9c4',
-	  	textAlign:  'center',
-	  	fontSize: 20,
-	  	color: 'black',
+			textAlign:'center',
+	  	fontSize: 24,
+			backgroundColor: '#FF4B2B',
+			color: 'white',
 	  	borderRadius: 20,
 	  	padding: 6,
-	  	borderWidth: 2,
-	  	borderColor: '#cbe6e8',
-	  	borderStyle: 'solid',
 	  	overflow: 'hidden',
 	  	justifyContent: 'center',
-	  	alignItems: 'center'
+			alignItems: 'center'
   	},
 });

@@ -25,16 +25,12 @@ Input.defaultProps={
 
 const styles=StyleSheet.create({
 	TextInput:{
-		height:50,
-		width: 150,
-		backgroundColor: 'red',
-		borderWidth: 2,
-		borderColor: 'black',
-		borderStyle: 'solid',
-		borderRadius: 10,
-		paddingLeft: 10,
-		paddingRight: 10,
-		justifyContent: 'center',
-		alignItems: 'center'
+		backgroundColor: '#eee',
+		opacity: .8,
+		paddingVertical: 12,
+		paddingHorizontal: 15,
+		marginVertical: 8,
+		marginHorizontal: 0,
+		width: '100%',
 	}
 });
