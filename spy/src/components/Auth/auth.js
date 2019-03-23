@@ -1,10 +1,12 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, ImageBackground} from 'react-native';
 import React from 'react';
 import Router from 'react-native-easy-router';
 import Input from '../Pure/TextInput/textinput.js';
 import Button from '../Pure/Button/button.js';
 import {styles} from './authstyle.js';
 import io from 'socket.io-client';
+
+import server from '../../../server.json';
 
 let socket;
 
@@ -35,15 +37,13 @@ export default class Auth extends React.Component {
   	}
 
 	componentDidMount() {
-		socket = io('http://localhost:8080');
+		socket = io(server.address);
 
 		socket.on('token', token => {
-			SetToken('token')
-			.then(() =>
 			this.props.router.MainMenu.push({
 				token:token,
 				socket:socket,
-			}));
+			});
 		});
 
     	this.GetToken()
@@ -93,31 +93,39 @@ export default class Auth extends React.Component {
   			password:this.state.password,
   		});
 
-  		this.props.router.push.MainMenu({
+      this.SetToken(JSON.stringify({
+        login:login,
+        password:password
+      }));
+
+  		/*this.props.router.push.MainMenu({
   			token:token,
   			socket:socket
-  		});
+  		});*/
 
   		this.clearForm();
   	}
 
   	render() {
   		return(
-	  		<View style={styles.Page}>
-	  			<View style={styles.Auth}>
-	  				<Input placeholder="Введите логин"
-	  				onChangeText={this.handleInputLogin}
-	  				value={this.state.login}/>
-	  				<Input placeholder="Введите пароль"
-	  				onChangeText={this.handleInputPassword}
-	  				value={this.state.password}/>
-            <View style={styles.ButtonAuth}>
-  	  				<Button onClick={this.handleSubmit}>
-  	  					<Text>Auth</Text>
-  	  				</Button>
-            </View>
-	  			</View>
-	  		</View>
+        <ImageBackground source={require('../../images/Auth.jpg')} 
+        style={{width: '100%', height: '100%'}}>
+  	  		<View style={styles.Page}>
+  	  			<View style={styles.Auth}>
+  	  				<Input placeholder="Введите логин"
+  	  				onChangeText={this.handleInputLogin}
+  	  				value={this.state.login}/>
+  	  				<Input placeholder="Введите пароль"
+  	  				onChangeText={this.handleInputPassword}
+  	  				value={this.state.password}/>
+              <View style={styles.ButtonAuth}>
+    	  				<Button onClick={this.handleSubmit}>
+    	  					<Text>Auth</Text>
+    	  				</Button>
+              </View>
+  	  			</View>
+  	  		</View>
+        </ImageBackground>
   		);
   	}
 }

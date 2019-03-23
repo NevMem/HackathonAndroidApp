@@ -16,7 +16,8 @@ export default class MainMenu extends React.Component{
 				address:"Дворец культуры и техники имени И.И. Газа",
 				location:{"latitude":59.87866,"longitude":30.26288},
 				posterRef:'http://kek',
-				artistNames:['kek','cheburek','lol','arbidol']
+				artistNames:['kek','cheburek','lol','arbidol'],
+				active:true,
 			},
 			{
 				_id:"5c95ab56d589e13c609ddce1",
@@ -63,6 +64,13 @@ export default class MainMenu extends React.Component{
 		});
 	}
 
+	goToConcert = () => {
+		this.props.router.push.Concert({
+			socket:this.state.socket,
+			token:this.state.token
+		});
+	}
+
 	render(){
 		return (
 			<View style={styles.Page}>
@@ -87,7 +95,9 @@ export default class MainMenu extends React.Component{
 										<Text>{concert.date}</Text>
 										<View style={styles.ButtonHere}>
 										{	concert.active ?
-										 <Button><Text>Я тут</Text></Button> :
+										 <Button onClick={this.goToConcert}>
+										 	<Text>Я тут</Text>
+										 </Button> :
 										 <Text></Text>
 										}
 										</View>
