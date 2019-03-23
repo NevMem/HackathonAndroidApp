@@ -1,7 +1,9 @@
-import {View, Text, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {styles} from "./browsestyle.js";
 import Button from '../Pure/Button/button.js';
+
+
 
 export default class Browse extends React.Component{
 	constructor(props){
@@ -15,7 +17,7 @@ export default class Browse extends React.Component{
 				date:"2019-03-23T16:00:00.000Z",
 				address:"Дворец культуры и техники имени И.И. Газа",
 				location:{"latitude":59.87866,"longitude":30.26288},
-				posterRef:'http://kek',
+				posterRef:'https://avatars.mds.yandex.net/get-pdb/49816/e764985b-dfc4-4b9a-b963-922db68dd7d6/s1200',
 				artistNames:['kek','cheburek','lol','arbidol']
 			},
 			{
@@ -62,9 +64,8 @@ export default class Browse extends React.Component{
 	}
 
 	AddConcert = (concertId) => {
-		this.state.socket.emit('addConcert', {
-			concertId:concertId
-		});
+		console.log(concertId);
+		this.state.socket.emit('addToSchedule', concertId);
 	}
 
 	render(){
@@ -78,24 +79,29 @@ export default class Browse extends React.Component{
 				<View style={styles.Concerts}>
 					<ScrollView style={styles.ScrollView}>
 						{this.state.concerts.map((concert,index)=>{
+							if(index>15)
+								return undefined;
+
 							return (
 								<View key={index} style={styles.Concert}>
 									<View style={styles.Icon}>
-
+										<Image 
+										source={{
+											uri:concert.poster
+										}}
+										style={styles.Icon}/>
 									</View>
 									<View style={styles.Info}> 
 										<Text>{concert.label}</Text>
 										<Text>{concert.address}</Text>
 										<Text>{concert.date}</Text>
 										<View style={styles.ButtonHere}>
-										<Button><Text>Добавить себе</Text></Button>
+										<Button onClick={()=>this.AddConcert.call(this,concert._id)}>
+										<Text>Добавить себе</Text></Button>
 										</View>
 									</View>
 								</View>
 							);
-							if(index>15){
-								break;
-							}
 						})}
 					</ScrollView>
 				</View>

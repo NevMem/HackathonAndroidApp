@@ -1,4 +1,4 @@
-import {View, Text,StyleSheet, Image, Dimensions} from 'react-native';
+import {View, Text,StyleSheet, Image, Dimensions, ScrollView} from 'react-native';
 import React from 'react';
 
 const Emodzi=[
@@ -13,14 +13,23 @@ const Emodzi=[
 export default class Header extends React.Component {
 	constructor(props) {
 		super(props);
-	} 
+	}
+  onContentSizeChange = (width,height) => {
+		this.refs.ScrollView.scrollTo({x:width});
+	}
 	render() {
 		return (
 			<View style={styles.Header}>
+				<ScrollView 
+					ref='ScrollView'
+					scrollEnabled={false}
+					horizontal={true}
+					onContentSizeChange={this.onContentSizeChange}
+					showsHorizontalScrollIndicator={false}
+					showsVerticalScrollIndicator={false}
+				>
 				{
 					this.props.emodzis.map((emodzi,index)=>{
-						if(this.props.emodzis.length-index>5)
-							return undefined;
 						return (
 							<View key={index} style={styles.Emodzi}>
 								<Image source={Emodzi[emodzi]} 
@@ -29,6 +38,7 @@ export default class Header extends React.Component {
 						);
 					})
 				}
+				</ScrollView>
 			</View>
 		);
 	}
@@ -48,5 +58,8 @@ const styles=StyleSheet.create({
 	Emodzi:{
 		height:50,
 		width: 50,
+		marginRight: 15,
+		marginTop:'auto',
+		marginBottom: 'auto',
 	}
 });

@@ -1,4 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+
+const Screen_width=Dimensions.get('window').width;
 
 export const styles=StyleSheet.create({
 	Auth:{
@@ -22,6 +24,9 @@ export const styles=StyleSheet.create({
 		width: 150,
 		height: 50,
 	},
+	Input:{
+		width:Screen_width*8/10
+	},
 	Span:{
 		color: 'white',
 		fontSize: 24,
@@ -32,12 +37,14 @@ export const styles=StyleSheet.create({
 		marginBottom: 20,
 		width: 100,
 		height: 100,
+		flexDirection: 'row',
+		justifyContent: 'space-around',
 	},
 	A:{
 		color: '#D7D7D9FF',
 		fontSize: 24,
-		marginVertical: 15,
-		marginHorizontal: 0,
+		marginTop: 25,
+		marginBottom: 15,
 	},
 	EnterText:{
 		color:'black',

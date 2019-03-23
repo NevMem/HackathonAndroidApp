@@ -1,11 +1,14 @@
-import {View, Text, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
+import Geolocation from 'react-native-geolocation-service';
 import {styles} from "./mainmenustyle.js";
 import Button from '../Pure/Button/button.js';
+
 
 export default class MainMenu extends React.Component{
 	constructor(props){
 		super(props);
+
 		this.state={
 			token:this.props.token,
 			socket:this.props.socket,
@@ -15,7 +18,7 @@ export default class MainMenu extends React.Component{
 				date:"2019-03-23T16:00:00.000Z",
 				address:"Дворец культуры и техники имени И.И. Газа",
 				location:{"latitude":59.87866,"longitude":30.26288},
-				posterRef:'http://kek',
+				poster:'https://avatars.mds.yandex.net/get-pdb/49816/e764985b-dfc4-4b9a-b963-922db68dd7d6/s1200',
 				artistNames:['kek','cheburek','lol','arbidol'],
 				isActive:true,
 			},
@@ -25,7 +28,7 @@ export default class MainMenu extends React.Component{
 				date:"2019-03-23T16:00:00.000Z",
 				address:"Дворец культуры и техники имени И.И. Газа",
 				location:{"latitude":59.87866,"longitude":30.26288},
-				posterRef:'http://kek',
+				poster:'https://avatars.mds.yandex.net/get-pdb/231404/9816eb13-88cc-4590-94aa-c50aaae9d05e/s1200',
 				artistNames:['kek','cheburek','lol','arbidol']
 			},
 			{
@@ -34,16 +37,7 @@ export default class MainMenu extends React.Component{
 				date:"2019-03-23T16:00:00.000Z",
 				address:"Дворец культуры и техники имени И.И. Газа",
 				location:{"latitude":59.87866,"longitude":30.26288},
-				posterRef:'http://kek',
-				artistNames:['kek','cheburek','lol','arbidol']
-			},
-			{
-				_id:"5c95ab56d589e13c609ddce1",
-				label:"Кай Метов",
-				date:"2019-03-23T16:00:00.000Z",
-				address:"Дворец культуры и техники имени И.И. Газа",
-				location:{"latitude":59.87866,"longitude":30.26288},
-				posterRef:'http://kek',
+				posterRef:'https://avatars.mds.yandex.net/get-pdb/234183/a754609d-5960-496c-8283-6a90516180d8/s1200',
 				artistNames:['kek','cheburek','lol','arbidol']
 			}],
 		};
@@ -56,7 +50,7 @@ export default class MainMenu extends React.Component{
 			this.setState({
 				concerts:data
 			});
-		})
+		});
 	}
 
 	changeToBrowse = () => {
@@ -78,20 +72,16 @@ export default class MainMenu extends React.Component{
 	render(){
 		return (
 			<View style={styles.Page}>
-				<View style={styles.Header}>
-					<TouchableOpacity onPress={() => this.changeToBrowse()} 
-					style={styles.BrowseButton}>
-						<Text style={styles.BrowseButtonText}>
-						Browse</Text>
-					</TouchableOpacity>
-				</View>
 				<View style={styles.Concerts}>
 					<ScrollView style={styles.ScrollView}>
 						{this.state.concerts.map((concert,index)=>{
 							return (
 								<View key={index} style={styles.Concert}>
 									<View style={styles.Icon}>
-
+										<Image source={{
+											uri:concert.poster,
+										}}
+										style={styles.Icon}/>
 									</View>
 									<View style={styles.Info}> 
 										<Text>{concert.label}</Text>
@@ -111,6 +101,13 @@ export default class MainMenu extends React.Component{
 							);
 						})}
 					</ScrollView>
+				</View>
+				<View style={styles.Footer}>
+					<TouchableOpacity onPress={() => this.changeToBrowse()} 
+					style={styles.BrowseButton}>
+						<Text style={styles.BrowseButtonText}>
+						Browse</Text>
+					</TouchableOpacity>
 				</View>
 			</View>
 		);

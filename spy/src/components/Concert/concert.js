@@ -28,7 +28,7 @@ export default class Concert extends React.Component {
 	componentDidMount() {
 		this.state.socket.on('tray new emoji', data => {
 			let index=data.index;
-			console.log(index);
+
 			let arr=this.state.emodzi;
 			arr[index]++;
 			let newCurEmo=this.state.curEmoji;

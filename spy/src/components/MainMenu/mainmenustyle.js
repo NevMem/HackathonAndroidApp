@@ -14,7 +14,7 @@ export const styles=StyleSheet.create({
 		color:'blue',
 		textDecorationLine: 'underline',
 	},
-	Header:{
+	Footer:{
 		flexGrow:1,
 		flex: 1,
 		width: Screen_Width,
