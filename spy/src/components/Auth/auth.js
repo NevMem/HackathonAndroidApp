@@ -114,7 +114,7 @@ export default class Auth extends React.Component {
 				>
 					<View style={styles.Auth}>
 							<Text style={styles.H1}>Вход</Text>
-							<View style={styles.socialContainer}>
+							<View style={styles.SocialContainer}>
 								<TouchableOpacity style={styles.Social}>
 									<Image source={require('../../images/socNet/f.png')}/>
 								</TouchableOpacity>
@@ -125,23 +125,25 @@ export default class Auth extends React.Component {
 									<Image source={require('../../images/socNet/v.png')}/>
 								</TouchableOpacity>
 							</View>
-							<Text style={styles.Span}>or use your account</Text>
-							<Input 
+							<Text style={styles.Span}>или используйте свой аккаунт</Text>
+							<Input
 								type="email" 
 								placeholder="Почта"
 								onChangeText={this.handleInputLogin}
 								value={this.state.login}
+								style={styles.Input}
 							/>
 							<Input
 								type="password"
 								placeholder="Пароль"
 								onChangeText={this.handleInputPassword}
 								value={this.state.password}
+								style={styles.Input}
 							/>
-							<Text href="#">Забыли пароль?</Text>
+							<Text href="#" style={styles.A}>Забыли пароль?</Text>
 							<View style={styles.ButtonAuth}>
 								<Button onClick={this.handleSubmit}>
-									<Text>Вход</Text>
+									<Text>ВХОД</Text>
 								</Button>
 							</View>
 						{/* <Input placeholder="Введите логин"
