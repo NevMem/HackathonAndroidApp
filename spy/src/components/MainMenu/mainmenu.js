@@ -17,7 +17,7 @@ export default class MainMenu extends React.Component{
 				location:{"latitude":59.87866,"longitude":30.26288},
 				posterRef:'http://kek',
 				artistNames:['kek','cheburek','lol','arbidol'],
-				active:true,
+				isActive:true,
 			},
 			{
 				_id:"5c95ab56d589e13c609ddce1",

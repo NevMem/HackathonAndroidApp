@@ -105,10 +105,9 @@ export default class Auth extends React.Component {
         password:this.state.password
       }));
 
-  		/*this.props.router.push.MainMenu({
-  			token:token,
+  		this.props.router.push.MainMenu({
   			socket:socket
-  		});*/
+  		});
 
   		this.clearForm();
   	}
