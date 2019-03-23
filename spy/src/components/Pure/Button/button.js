@@ -19,15 +19,13 @@ Button.defaultProps={
 
 const styles=StyleSheet.create({
 	Button:{
-		backgroundColor: '#3ab9c4',
-	  	textAlign:  'center',
+			textAlign:'center',
+			textColor: 'white',
 	  	fontSize: 20,
-	  	color: 'black',
+	  	backgroundColor: '#FFE53B',
+			backgroundImage: 'linear-gradient(147deg, #FFE53B 0%, #FF2525 74%)',
 	  	borderRadius: 20,
 	  	padding: 6,
-	  	borderWidth: 2,
-	  	borderColor: '#cbe6e8',
-	  	borderStyle: 'solid',
 	  	overflow: 'hidden',
 	  	justifyContent: 'center',
 	  	alignItems: 'center'

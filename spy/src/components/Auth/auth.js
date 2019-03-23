@@ -108,11 +108,42 @@ export default class Auth extends React.Component {
 
   	render() {
   		return(
-        <ImageBackground source={require('../../images/Auth.jpg')} 
-        style={{width: '100%', height: '100%'}}>
+				<ImageBackground 
+					source={require('../../images/Auth.jpg')} 
+					style={{width: '100%', height: '100%'}}
+				>
   	  		<View style={styles.Page}>
   	  			<View style={styles.Auth}>
-  	  				<Input placeholder="Введите логин"
+						<Div class="form-container sign-in-container">
+							<Form action="#">
+								<H1>Вход</H1>
+								<Div class="social-container">
+									<A href="#" class="social"><I class="fab fa-facebook-f"></I></A>
+									<A href="#" class="social"><I class="fab fa-google-plus-g"></I></A>
+									<A href="#" class="social"><I class="fab fa-linkedin-in"></I></A>
+								</Div>
+								<Span>or use your account</Span>
+								<Input 
+									type="email" 
+									placeholder="Почта"
+									onChangeText={this.handleInputLogin}
+  	  						value={this.state.login}
+								/>
+								<Input
+									type="password"
+									placeholder="Пароль"
+									onChangeText={this.handleInputPassword}
+									value={this.state.password}
+								/>
+								<A href="#">Забыли пароль?</A>
+								<View style={styles.ButtonAuth}>
+									<Button onClick={this.handleSubmit}>
+										<Text>Вход</Text>
+									</Button>
+								</View>
+							</Form>
+						</Div>
+  	  				{/* <Input placeholder="Введите логин"
   	  				onChangeText={this.handleInputLogin}
   	  				value={this.state.login}/>
   	  				<Input placeholder="Введите пароль"
@@ -122,7 +153,7 @@ export default class Auth extends React.Component {
     	  				<Button onClick={this.handleSubmit}>
     	  					<Text>Auth</Text>
     	  				</Button>
-              </View>
+              </View> */}
   	  			</View>
   	  		</View>
         </ImageBackground>
