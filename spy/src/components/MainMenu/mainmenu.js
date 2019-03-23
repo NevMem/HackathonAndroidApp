@@ -50,7 +50,9 @@ export default class MainMenu extends React.Component{
 	}
 
 	componentDidMount() {
-		this.state.socket.on('concert',data=>{
+		this.state.socket.emit('getUserConcerts',{});
+
+		this.state.socket.on('userConcerts',data=>{
 			this.setState({
 				concerts:data
 			});
@@ -94,7 +96,7 @@ export default class MainMenu extends React.Component{
 										<Text>{concert.address}</Text>
 										<Text>{concert.date}</Text>
 										<View style={styles.ButtonHere}>
-										{	concert.active ?
+										{	concert.isActive ?
 										 <Button onClick={this.goToConcert}>
 										 	<Text>Я тут</Text>
 										 </Button> :

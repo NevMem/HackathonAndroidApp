@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, Text, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
 import React from 'react';
 import Router from 'react-native-easy-router';
 import Input from '../Pure/TextInput/textinput.js';
@@ -37,22 +37,30 @@ export default class Auth extends React.Component {
   	}
 
 	componentDidMount() {
-		socket = io(server.address);
+		socket = io.connect(server.address);
 
-		socket.on('token', token => {
-			this.props.router.MainMenu.push({
-				token:token,
+    socket.on('connect',()=>{
+        console.log('connect');
+      });
+
+		socket.on('auth succeed', user => {
+      console.log('kek');
+			this.props.router.push.MainMenu({
+				token:user.token,
 				socket:socket,
+        name:user.name,
+        surname:user.surname,
 			});
 		});
+
+    socket.on('auth failed', error => {
+      console.log(error);
+    });
 
     	this.GetToken()
     	.then(value=>{
       		if(value!==null){
-        		this.setState({
-          			token:value
-        		});
-        		socket.send('token',{token:token});
+        		socket.emit('token',JSON.parse(token));
       		}
     	});
   	}
@@ -87,15 +95,14 @@ export default class Auth extends React.Component {
   		//if(!this.validationForm())
   		//	return;
   		//send
-  		let token = 'kek';
-  		socket.send('login',{
+  		socket.emit('auth',{
   			login:this.state.login,
   			password:this.state.password,
   		});
 
       this.SetToken(JSON.stringify({
-        login:login,
-        password:password
+        login:this.state.login,
+        password:this.state.password
       }));
 
   		/*this.props.router.push.MainMenu({
