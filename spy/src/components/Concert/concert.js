@@ -20,7 +20,7 @@ export default class Concert extends React.Component {
 			socket:this.props.socket,
 			token:this.props.token,
 			emodzi:[0].concat(this.props.emoji),
-			curEmoji:[1,2,3,4,5],
+			curEmoji:[],
 			concertId:this.props.concertId,
 		};
 	}
@@ -52,6 +52,11 @@ export default class Concert extends React.Component {
 		let arr=[1,2,3,4,5,6];
 		return(
 			<View style={styles.Page}>
+				<View style={styles.HeaderView}>
+					<View>
+					<Text style={styles.Heading}>Эмоции</Text>
+					</View>
+				</View>
 				<Header emodzis={this.state.curEmoji}/>
 				<View style={styles.Emodzis}>
 				{

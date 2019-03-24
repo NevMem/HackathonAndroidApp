@@ -77,8 +77,10 @@ export const styles=StyleSheet.create({
 	ButtonHere:{
 		height:50,
 		width: Screen_Width - Icon_Width - 30,
-		alignItems: 'flex-end',
-		marginBottom: 10
+		alignItems: 'stretch',
+		marginBottom: 10,
+		flexDirection: 'row',
+		justifyContent: 'space-between',
 	},
 	ButtonText: {
 		paddingLeft: 24,

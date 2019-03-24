@@ -78,7 +78,7 @@ export default class Profile extends React.Component {
 					</View>
 				</View>
 			<Footer active="Profile"
-				Quit={this.props.router.reset.Auth}
+				Quit={this.props.router.pop}
 				Profile={()=>{}}
 				Add={this.goToAdd}
 				Concert ={this.goToConcerts}

@@ -29,7 +29,7 @@ export const styles=StyleSheet.create({
 	},
 	Span:{
 		color: 'white',
-		fontSize: 24,
+		fontSize: 20,
 		fontWeight: "300",
 	},
 	Social:{
@@ -43,7 +43,7 @@ export const styles=StyleSheet.create({
 	A:{
 		color: '#D7D7D9FF',
 		fontSize: 24,
-		marginTop: 25,
+		marginTop: 35,
 		marginBottom: 15,
 	},
 	EnterText:{

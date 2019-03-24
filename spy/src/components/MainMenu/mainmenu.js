@@ -4,6 +4,8 @@ import {View, Text, StyleSheet,
 import React from 'react';
 import {styles} from "./mainmenustyle.js";
 import Button from '../Pure/Button/button.js';
+import ChatButton from '../Pure/ChatButton/chatbutton.js';
+import Counter from '../Pure/Counter/counter.js';
 import Footer from '../Pure/Footer/footer.js';
 import Preloader from '../Pure/Preloader/preloader.js'
 
@@ -118,11 +120,14 @@ export default class MainMenu extends React.Component{
 										<Text style={styles.Address}>{concert.address}</Text>
 										<Text style={styles.Date}>{this.formatDate(concert.date)}</Text>
 										<View style={styles.ButtonHere}>
+											<ChatButton>
+										 		<Text style={styles.ButtonText}>Чат</Text>
+										 </ChatButton>
 										{	concert.isActive ?
-										 <Button style={styles.Button} onClick={
+										 <Counter date={concert.date} onClick={
 										 	()=>this.goToConcert.call(this,concert._id,concert.emoji)}>
 										 	<Text style={styles.ButtonText}>Я тут</Text>
-										 </Button> :
+										 </Counter> :
 										 undefined
 										}
 										</View>
