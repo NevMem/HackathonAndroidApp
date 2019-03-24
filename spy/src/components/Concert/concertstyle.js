@@ -1,10 +1,17 @@
-import {StyleSheet, Dimension} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+
+const Screen_Width = Dimensions.get('window').width;
+const Screen_Height = Dimensions.get('window').height;
+const Emodzi_Padding_Hor = 30
+const Emodzi_Padding_Ver = 30
+const Emodzi_Size = Math.min(Screen_Width / 2, (Screen_Height - 61) / 3.5)
 
 export const styles=StyleSheet.create({
 	Page:{
 		flexDirection: 'column',
 		flexWrap: 'wrap',
 		flex: 1,
+		backgroundColor: '#20242d',
 	},
 	Emodzis:{
 		flexDirection: 'row',
@@ -13,38 +20,56 @@ export const styles=StyleSheet.create({
 		maxWidth: 600,
 		alignItems: 'center',
 		justifyContent: 'space-around',
-		backgroundColor: 'purple',
+		// backgroundColor: 'purple',
 	},
 	Emodzi:{
-		flex: 1,
-		flexShrink:1,
-		flexGrow:1,
-		margin: 5,
-		minWidth: 170,
-		minHeight: 170,
-		maxWidth:300,
-		maxHeight: 300,
-		padding: 30,
-		textAlign: 'center',
-		backgroundColor: 'red',
+		// flex: 1,
+		// flexShrink:1,
+		// flexGrow:1,
+		// minWidth: 170,
+		// minHeight: 170,
+		// maxWidth:300,
+		// maxHeight: 300,
+		// textAlign: 'center',
+		width: Emodzi_Size,
+		height: Emodzi_Size,
+
+		// backgroundColor: 'red',
+	},
+	IconWrapper: {
+		width: Emodzi_Size - 2 * Emodzi_Padding_Hor,
+		height: Emodzi_Size - 2 * Emodzi_Padding_Ver,
+	},
+	EmodziIconWrapper: {
+		position: 'absolute',
+		top: Emodzi_Padding_Ver,
+		left: Emodzi_Padding_Hor,
+		width: Emodzi_Size - 2 * Emodzi_Padding_Hor,
+		height: Emodzi_Size - 2 * Emodzi_Padding_Ver,
 	},
 	EmodziAmount:{
-		backgroundColor: 'green',
-		alignItems: 'center'
+		// backgroundColor: 'green',
+		// alignItems: 'center',
+		position: 'absolute',
+		right: 14,
+		bottom: 14,
+
 	},
 	EmodziAmountCorner:{
-		alignSelf: 'flex-end',
-		borderWidth: 1,
-		borderColor: 'yellow',
-		borderStyle: 'solid',
-		width: 20,
+		// alignSelf: 'flex-end',
+		// borderWidth: 1,
+		// borderColor: 'yellow',
+		// borderStyle: 'solid',
+		// width: 20,
 		height: 20,
 		borderRadius: 10,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: 'black',
+		// backgroundColor: 'black',
 	},
 	EmodziText:{
-		color:'white'
+		color:'white',
+		fontSize: 24,
+		fontWeight: '200',
 	}
 });

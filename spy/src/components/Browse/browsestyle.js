@@ -1,33 +1,13 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 const Screen_Width = Dimensions.get('window').width;
-
-const Icon_Width = 200;
+const Icon_Width = Screen_Width*35/100;
+const Height=200;
 
 export const styles=StyleSheet.create({
 	Page:{
 		flexDirection: 'column',
 		flex: 1,
-	},
-	BrowseButtonText:{
-		fontSize: 26,
-		color:'blue',
-		textDecorationLine: 'underline',
-	},
-	Header:{
-		flexGrow:1,
-		flex: 1,
-		width: Screen_Width,
-		backgroundColor: 'red',
-		borderBottomWidth: 2,
-		borderBottomColor: 'black',
-		borderStyle: 'solid',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	HeaderText:{
-		color: 'black',
-		fontSize: 20,
 	},
 	Concerts:{
 		flexGrow:9,
@@ -37,31 +17,75 @@ export const styles=StyleSheet.create({
 		alignItems: 'center'
 	},
 	ScrollView:{
-		backgroundColor: 'white',
+		backgroundColor: '#20242d',
 		width:Screen_Width,
+	},
+	Name:{
+		color:'white',
+		textAlign: 'left',
+		fontSize: 22
+	},
+	Address:{
+		color:'#8f929b',
+		textAlign: 'left'
+	},
+	Date:{
+		color:'#8f929b',
+		textAlign: 'center'
 	},
 	Concert:{
 		width: Screen_Width,
-		height: 250,
+		height: Height,
 		borderBottomWidth: 1,
-		borderBottomColor: 'white',
+		borderBottomColor: '#2f333c',
 		borderStyle: 'solid',
 		flexDirection: 'row',
 	},
+	IconWrapper: {
+		padding: 7,
+		borderRadius: 10,
+	},
 	Icon:{
-		width:Icon_Width,
-		height:249,
-		backgroundColor: 'black',
+		width:Icon_Width - 14,
+		height:Height-15,
+		backgroundColor: '#20242d',
+		borderRadius: 10
 	},
 	Info:{
 		width:Screen_Width-Icon_Width,
 		flex: 1,
-		backgroundColor: 'purple',
-		alignItems: 'center',
+		backgroundColor: '#20242d',
+		alignItems: 'flex-start',
 		justifyContent: 'space-around',
+		paddingLeft: 10
 	},
 	ButtonHere:{
 		height:50,
-		width: 120,
-	}
+		width: Screen_Width - Icon_Width - 30,
+		alignItems: 'flex-end',
+		marginBottom: 10
+	},
+	ButtonText: {
+		paddingLeft: 24,
+		paddingRight: 24
+	},
+	Heading: {
+		fontSize: 28,
+		color: 'white',
+		fontWeight: '400',
+		paddingLeft: 10,
+		paddingRight: 10,
+		paddingTop: 10,
+		paddingBottom: 10
+	},
+	HeaderView: {
+		flex: 1,
+		flexGrow: 1,
+		width: Screen_Width,
+		paddingTop: 20,
+		paddingBottom: 20,
+		paddingLeft: 20,
+		paddingRight: 20,
+		flexDirection: 'row'
+	},
 });

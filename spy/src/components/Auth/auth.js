@@ -1,4 +1,5 @@
-import {View, Text, TouchableOpacity, ImageBackground, Image, AsyncStorage} from 'react-native';
+import {View, Text, TouchableOpacity, ImageBackground,
+  Image, AsyncStorage, ToastAndroid} from 'react-native';
 import React from 'react';
 import Router from 'react-native-easy-router';
 import Input from '../Pure/TextInput/textinput.js';
@@ -38,8 +39,10 @@ export default class Auth extends React.Component {
 
   componentDidMount() {
     socket = io.connect(server.address);
+   // ToastAndroid.show("Ping " + server.address, ToastAndroid.LONG)
 
     socket.on('connect',()=>{ 
+      //ToastAndroid.show("Conneted", ToastAndroid.LONG)
         this.GetToken()
         .then(value=>{
           if(value!==null){
@@ -49,8 +52,8 @@ export default class Auth extends React.Component {
       });
 
     socket.on('auth succeed', user => {
-      console.log('kek');
-      this.props.router.push.MainMenu({
+     // console.log('connect');
+      this.props.router.push.Profile({
         token:user.token,
         socket:socket,
         name:user.name,
@@ -59,7 +62,7 @@ export default class Auth extends React.Component {
     });
 
     socket.on('auth failed', error => {
-      console.log(error);
+      //console.log(error);
     });
   }
 

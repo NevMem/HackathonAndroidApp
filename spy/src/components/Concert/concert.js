@@ -58,10 +58,10 @@ export default class Concert extends React.Component {
 					arr.map(key=>{
 						return(
 							<View key = {key} style = {styles.Emodzi}>
-								<TouchableOpacity 
-								onPress={() => this.sendEmodzi.call(this,key)}>
-									<Image source={Emodzi[key-1]}
-									style={{width: 100, height: 100}}/>
+								<TouchableOpacity style = {styles.EmodziIconWrapper}
+									onPress={() => this.sendEmodzi.call(this,key)}>
+										<Image source={Emodzi[key-1]}
+											style={styles.IconWrapper}/>
 								</TouchableOpacity>
 								<View style={styles.EmodziAmount}>
 									<View style={styles.EmodziAmountCorner}>

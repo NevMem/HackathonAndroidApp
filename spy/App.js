@@ -5,7 +5,8 @@ import Auth from './src/components/Auth/auth.js';
 import Browse from './src/components/Browse/browse.js';
 import MainMenu from './src/components/MainMenu/mainmenu.js';
 import Concert from './src/components/Concert/concert.js';
-const routes = {Auth, MainMenu, Browse, Concert};
+import Profile from './src/components/Profile/profile.js';
+const routes = {Auth, MainMenu, Browse, Concert, Profile};
 
 export default class App extends Component {
   constructor() {

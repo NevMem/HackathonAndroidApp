@@ -1,45 +1,22 @@
-import {View, Text, StyleSheet, ScrollView, TouchableOpacity, Image} from 'react-native';
+import {View, Text, StyleSheet, 
+	ImageBackground,
+	ScrollView, TouchableOpacity, Image, ActivityIndicator} from 'react-native';
 import React from 'react';
-import Geolocation from 'react-native-geolocation-service';
 import {styles} from "./mainmenustyle.js";
 import Button from '../Pure/Button/button.js';
+import Footer from '../Pure/Footer/footer.js';
+import Preloader from '../Pure/Preloader/preloader.js'
 
+const HeaderImageSize = 40
 
 export default class MainMenu extends React.Component{
 	constructor(props){
 		super(props);
 
 		this.state={
-			token:this.props.token,
 			socket:this.props.socket,
-			concerts:[{
-				_id:"5c95ab56d589e13c609ddce1",
-				label:"Кай Метов",
-				date:"2019-03-23T16:00:00.000Z",
-				address:"Дворец культуры и техники имени И.И. Газа",
-				location:{"latitude":59.87866,"longitude":30.26288},
-				poster:'https://avatars.mds.yandex.net/get-pdb/49816/e764985b-dfc4-4b9a-b963-922db68dd7d6/s1200',
-				artistNames:['kek','cheburek','lol','arbidol'],
-				isActive:true,
-			},
-			{
-				_id:"5c95ab56d589e13c609ddce1",
-				label:"Кай Метов",
-				date:"2019-03-23T16:00:00.000Z",
-				address:"Дворец культуры и техники имени И.И. Газа",
-				location:{"latitude":59.87866,"longitude":30.26288},
-				poster:'https://avatars.mds.yandex.net/get-pdb/231404/9816eb13-88cc-4590-94aa-c50aaae9d05e/s1200',
-				artistNames:['kek','cheburek','lol','arbidol']
-			},
-			{
-				_id:"5c95ab56d589e13c609ddce1",
-				label:"Кай Метов",
-				date:"2019-03-23T16:00:00.000Z",
-				address:"Дворец культуры и техники имени И.И. Газа",
-				location:{"latitude":59.87866,"longitude":30.26288},
-				posterRef:'https://avatars.mds.yandex.net/get-pdb/234183/a754609d-5960-496c-8283-6a90516180d8/s1200',
-				artistNames:['kek','cheburek','lol','arbidol']
-			}],
+			loading: true,
+			concerts:[],
 		};
 	}
 
@@ -48,7 +25,8 @@ export default class MainMenu extends React.Component{
 
 		this.state.socket.on('userConcerts',data=>{
 			this.setState({
-				concerts:data
+				concerts:data,
+				loading: false
 			});
 		});
 	}
@@ -56,8 +34,8 @@ export default class MainMenu extends React.Component{
 	changeToBrowse = () => {
 		this.props.router.push.Browse({
 			socket:this.state.socket,
-			token:this.props.token,
-		});
+		},
+		{type:'none'});
 	}
 
 	goToConcert = (concertId, emoji) => {
@@ -69,31 +47,83 @@ export default class MainMenu extends React.Component{
 		});
 	}
 
+	goToProfile = () => {
+		this.props.router.push.Profile({
+			socket:this.state.socket
+		});
+	}
+
+	monthName(index) {
+		switch (index) {
+			case 0: return 'January'
+			case 1: return 'February'
+			case 2: return 'March'
+			case 3: return 'April'
+			case 4: return 'May'
+			case 5: return 'June'
+			case 6: return 'July'
+			case 7: return 'August'
+			case 8: return 'September'
+			case 9: return 'October'
+			case 10: return 'November'
+			case 11: return 'December'
+		}
+		return 'Unknown'
+	}
+
+	format(str) {
+		str = str + ''
+		while (str.length < 2)
+			str = '0' + str
+		return str
+	}
+
+	formatDate(str) {
+		const date = new Date(str)
+		return this.format(date.getDate()) + " " + this.monthName(date.getMonth())
+			+ " " + this.format(date.getHours()) + ":" + this.format(date.getMinutes())
+	}
+
 	render(){
 		return (
 			<View style={styles.Page}>
 				<View style={styles.Concerts}>
 					<ScrollView style={styles.ScrollView}>
+						<View style={styles.HeaderView}>
+							<ImageBackground style={{
+								width: HeaderImageSize, 
+								height: HeaderImageSize
+							}} source = {require('../../images/calendar.png')}>
+							</ImageBackground>
+							<View style = {{
+								height: HeaderImageSize,
+								flexDirection: 'column',
+								justifyContent: 'space-around'
+							}}>
+								<Text style={styles.Heading}>Ваш список</Text>
+							</View>
+						</View>
+						{this.state.loading && <Preloader />}
 						{this.state.concerts.map((concert,index)=>{
 							return (
 								<View key={index} style={styles.Concert}>
-									<View style={styles.Icon}>
+									<View style={styles.IconWrapper}>
 										<Image source={{
 											uri:concert.poster,
 										}}
 										style={styles.Icon}/>
 									</View>
 									<View style={styles.Info}> 
-										<Text>{concert.label}</Text>
-										<Text>{concert.address}</Text>
-										<Text>{concert.date}</Text>
+										<Text style={styles.Name}>{concert.label}</Text>
+										<Text style={styles.Address}>{concert.address}</Text>
+										<Text style={styles.Date}>{this.formatDate(concert.date)}</Text>
 										<View style={styles.ButtonHere}>
 										{	concert.isActive ?
-										 <Button onClick={
+										 <Button style={styles.Button} onClick={
 										 	()=>this.goToConcert.call(this,concert._id,concert.emoji)}>
-										 	<Text>Я тут</Text>
+										 	<Text style={styles.ButtonText}>Я тут</Text>
 										 </Button> :
-										 <Text></Text>
+										 undefined
 										}
 										</View>
 									</View>
@@ -102,13 +132,11 @@ export default class MainMenu extends React.Component{
 						})}
 					</ScrollView>
 				</View>
-				<View style={styles.Footer}>
-					<TouchableOpacity onPress={() => this.changeToBrowse()} 
-					style={styles.BrowseButton}>
-						<Text style={styles.BrowseButtonText}>
-						Browse</Text>
-					</TouchableOpacity>
-				</View>
+				<Footer active='Concerts'
+				Concert={()=>{}}
+				Quit={this.props.router.pop}
+				Add={this.changeToBrowse}
+				Profile={this.goToProfile}/>
 			</View>
 		);
 	}
